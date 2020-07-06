@@ -2,7 +2,7 @@ ID	PID	STATEMENT	TYPE	ALLERGEN	SYSTEM	CODE	START_DATE	END_DATE	REACTION	SNOMED	S
 1	613876	negative	general	No known allergies	SNOMED	160244002	2000				
 2	621799	positive	drugClass	sulfonamide antibacterial	NDFRT	N0000175503	2000		skin rash	271807003	mild
 3	621799	positive	food	peanut	UNII	QE1QX6B99R	2000		Anaphylaxis	39579001	severe
-4	629528	negative	general	No known allergies	SNOMED	160244002	2000				
+4	629528	negative	general	No known allergies	SNOMED	160244002	2001				
 5	640264	negative	general	No known allergies	SNOMED	160244002	2000				
 6	644201	negative	general	No known allergies	SNOMED	160244002	2000				
 7	665677	negative	general	No known allergies	SNOMED	160244002	2000				
