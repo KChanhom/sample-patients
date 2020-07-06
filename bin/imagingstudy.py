@@ -14,8 +14,9 @@ also maintains complete imaging studies lists by patient id"""
       """Loads patient imaging studies"""
       
       # Loop through imaging studies and build patient imaging studies lists:
-      probs = csv.reader(file(IMAGINGSTUDIES_FILE,'U'),dialect='excel-tab')
-      header = probs.next() 
+      probs = csv.reader(open(IMAGINGSTUDIES_FILE,'U'),dialect='excel-tab')
+      # header = probs.next()
+      header = next(probs)
       for prob in probs:
           cls(dict(zip(header,prob))) # Create a clinical note instance 
 
@@ -64,7 +65,7 @@ if __name__== '__main__':
       parser.error("No results found for pid = %s"%args.pid)
     probs = ImagingStudy.imagingStudies[args.pid]
     for prob in probs: 
-      print prob.asTabString()
+      print (prob.asTabString())
     
 
      

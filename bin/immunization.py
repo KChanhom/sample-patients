@@ -14,8 +14,9 @@ also maintains complete Immunization lists by patient id"""
       """Loads patient Immunization observations"""
       
       # Loop through Immunizations and build patient Immunizations lists:
-      iis = csv.reader(file(IMMUNIZATIONS_FILE,'U'),dialect='excel-tab')
-      header = iis.next() 
+      iis = csv.reader(open(IMMUNIZATIONS_FILE,'U'),dialect='excel-tab')
+      # header = iis.next() 
+      header = next(iis)
       for i in iis:
           cls(dict(zip(header,i))) # Create a Immunization instance (saved in Immunizations.immunizations)
 
@@ -34,21 +35,21 @@ also maintains complete Immunization lists by patient id"""
         return self.sourcerow
 
 if __name__== '__main__':
-  print "As main"
+  print ("As main")
   parser = argparse.ArgumentParser(description='Test Data Vitals Module')
   group = parser.add_mutually_exclusive_group()
   group.add_argument('--Immunizations', action='store_true', help='list all Immunizations')
   group.add_argument('--pid',nargs='?', default='1614502',
      help='display Immunizations for a given patient id (default=1614502)')
   args = parser.parse_args()
-  print args 
+  print (args)
   Immunization.load()
   if args.pid:
     if not args.pid in Immunization.immunizations:
       parser.error("No results found for pid = %s"%args.pid)
     iis = Immunization.immunizations[args.pid]
     for Immunization in iis: 
-      print Immunization.asTabString()
+      print (Immunization.asTabString())
     
 
      

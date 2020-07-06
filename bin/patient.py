@@ -61,8 +61,9 @@ class Patient:
       """Load patients from a data file"""
 
       # Open data file and read in the first (header) record
-      pats = csv.reader(file(patient_file_name,'U'),dialect='excel-tab')
-      header = pats.next() 
+      pats = csv.reader(open(patient_file_name,'U'),dialect='excel-tab')
+      # header = pats.next() 
+      header = next(pats)
 
       # Now, read in patient data:
       for pat in pats: 

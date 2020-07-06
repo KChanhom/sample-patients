@@ -14,8 +14,10 @@ also maintains complete documents lists by patient id"""
       """Loads patient documents"""
       
       # Loop through documents and build patient documents lists:
-      probs = csv.reader(file(DOCUMENTS_FILE,'U'),dialect='excel-tab')
-      header = probs.next() 
+      probs = csv.reader(open(DOCUMENTS_FILE,'U'),dialect='excel-tab')
+      # header = probs.next() 
+      header = next(probs)
+
       for prob in probs:
           cls(dict(zip(header,prob))) # Create a clinical note instance 
 
@@ -57,7 +59,7 @@ if __name__== '__main__':
       parser.error("No results found for pid = %s"%args.pid)
     probs = Document.documents[args.pid]
     for prob in probs: 
-      print prob.asTabString()
+      print (prob.asTabString())
     
 
      

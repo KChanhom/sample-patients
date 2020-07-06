@@ -10,7 +10,7 @@ def compute_hash(fileName):
     try:
         fd = open(fileName,"rb")
     except IOError:
-        print "Unable to open the file in readmode:", fileName
+        print ("Unable to open the file in readmode:", fileName)
         return
     content = fd.readlines()
     fd.close()

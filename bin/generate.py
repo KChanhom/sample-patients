@@ -40,21 +40,21 @@ def initData():
 def displayPatientSummary(pid):
    """writes a patient summary to stdout"""
    if not pid in Patient.mpi: return
-   print Patient.mpi[pid].asTabString()
-   print "PROBLEMS: ",
-   if not pid in Problem.problems: print "None",
+   print (Patient.mpi[pid].asTabString())
+   print ("PROBLEMS: "),
+   if not pid in Problem.problems: print ("None"),
    else: 
-     for prob in Problem.problems[pid]: print prob.name+"; ",
-   print "\nMEDICATIONS: ",
-   if not pid in Med.meds: print "None",
+     for prob in Problem.problems[pid]: print (prob.name+"; "),
+   print ("\nMEDICATIONS: "),
+   if not pid in Med.meds: print ("None"),
    else:
      for med in Med.meds[pid]: 
-       print med.name+"{%d}; "%len(Refill.refill_list(pid,med.rxn)),
-   print "\nLABS: ",
-   if not pid in Lab.results: print "None",
+       print (med.name+"{%d}; "%len(Refill.refill_list(pid,med.rxn))),
+   print ("\nLABS: "),
+   if not pid in Lab.results: print ("None"),
    else:
-     print "%d results"%len(Lab.results[pid])
-   print "\n"
+     print ("%d results"%len(Lab.results[pid]))
+   print ("\n")
 
 if __name__=='__main__':
 
@@ -87,7 +87,8 @@ if __name__=='__main__':
 
   if args.writeFHIR:
     import fhir
-    print "Writing files to %s:"%args.writeFHIR
+    print ("Writing files to %s:"%args.writeFHIR)
+
     initData()
     path = args.writeFHIR
     baseURL = args.baseURL or ""

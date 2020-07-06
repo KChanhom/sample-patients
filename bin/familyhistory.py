@@ -12,8 +12,9 @@ class FamilyHistory:
         """Loads patient family histories"""
       
         # Loop through family histories and build patient FamilyHistory lists:
-        histories = csv.reader(file(FAMILYHISTORY_FILE,'U'),dialect='excel-tab')
-        header = histories.next() 
+        histories = csv.reader(open(FAMILYHISTORY_FILE,'U'),dialect='excel-tab')
+        # header = histories.next() 
+        header = next(histories)
         for history in histories:
             cls(dict(zip(header,history))) # Create a FamilyHistory instance 
 
@@ -56,4 +57,4 @@ if __name__ == '__main__':
             parser.error("No results found for patientid = %s"%args.patientid)
         histories = FamilyHistory.familyHistories[args.patientid]
         for history in histories: 
-            print history.asTabString()
+            print (history.asTabString())

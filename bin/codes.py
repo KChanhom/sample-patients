@@ -12,8 +12,9 @@ class Loinc:
       """Loads code_info dictionary for LOINC codes in loinc_list"""
       
       # Open data file and read in the first (header) record
-      loincs = csv.reader(file(LOINC_FILE,'U'),dialect='excel-tab')
-      header = loincs.next() 
+      loincs = csv.reader(open(LOINC_FILE,'U'),dialect='excel-tab')
+      header = next(loincs)
+      # header = loincs.next() 
       # Now, read in loinc codes:
       for loinc in loincs: 
         l = dict(zip(header,loinc)) # build row dictionary of values
@@ -44,4 +45,4 @@ if __name__== '__main__':
      parser.error("LOINC code %s not found"%args.loinc)
   else: 
     l = Loinc.info[args.loinc]
-    print l.code, l.name,l.scale,l.ucum, l.system 
+    print (l.code, l.name,l.scale,l.ucum, l.system)

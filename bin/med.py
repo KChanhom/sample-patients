@@ -14,8 +14,10 @@ also maintains complete med lists by patient id"""
       """Loads patient Med observations"""
       
       # Loop through meds and build patient med lists:
-      meds = csv.reader(file(MEDS_FILE,'U'),dialect='excel-tab')
-      header = meds.next() 
+      meds = csv.reader(open(MEDS_FILE,'U'),dialect='excel-tab')
+      # header = meds.next()
+      header = next(meds)
+
       for med in meds:
           cls(dict(zip(header,med))) # Create a med instance (saved in Med.meds)
 
@@ -69,7 +71,7 @@ if __name__== '__main__':
       parser.error("No results found for pid = %s"%args.pid)
     meds = Med.meds[args.pid]
     for med in meds: 
-      print med.asTabString()
+      print (med.asTabString())
     
 
      
