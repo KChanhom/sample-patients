@@ -14,7 +14,6 @@ class Patient:
     @classmethod
     def generate(cls,patient_file_name=RI_PATIENTS_FILE):
       """Generates a patient file from raw data; replaces old patients file"""
-
       # Open the patient data file for writing generated data
       f = open(PATIENTS_FILE,'w')
       top = True # Starting at the top of the file (need to write header here...)
@@ -59,7 +58,6 @@ class Patient:
     @classmethod
     def load(cls,patient_file_name=PATIENTS_FILE):
       """Load patients from a data file"""
-
       # Open data file and read in the first (header) record
       pats = csv.reader(open(patient_file_name,'U'),dialect='excel-tab')
       # header = pats.next() 

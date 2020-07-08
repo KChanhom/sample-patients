@@ -1,0 +1,7 @@
+{
+    "people": [
+        {
+            "website": "{{p.fname}} {{p.lname}}"
+        }
+    ]
+}
